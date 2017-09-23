@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<title>Beathoven</title>
+
+
+  <link rel='stylesheet prefetch' href='/static/css/pink.min.css'>
+<link rel='stylesheet prefetch' href='/static/css/pink2.min.css'>
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
+
+      <link rel="stylesheet" href="/static/css/horizontal-card.css">
+
+
+
+			  <link rel="stylesheet" href="/static/css/materialize.min.css">
+			  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			  <link rel="stylesheet" href="/static/css/index_1.css">
+			  <script src="/static/js/modernizr.js" type="text/javascript"></script>
+			  <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+			  <script src="/static/js/materialize.min.js"></script>
+			  <script src="/static/js/prefixfree.min.js"></script>
+
+		<script src="/static/js/submissionthrottling.js"></script>
+		<script src="/static/js/multiplesearch.js"></script>
+		
+		<style>
+			.input-field{
+						border:0px solid black;display:block;
+				
+				}
+				div.i {background-color:#FFFFFF;color:#333333;}
+				div.i:hover { background-color:#DDDDDD; }
+		</style>
+		
+	</head>
+	<body>
+		  <nav class = "navstatic">
+			<div class="nav-wrapper white">
+			   <ul class = "left">
+			   <li>
+			      <a><i class="material-icons" style = "color:black">menu</i></a>
+			   </li>
+			   <li>
+			    <div class="user" style="background-image:url('/static/images/b.png')"></div>
+			   </li>
+			   <li><a href="http://localhost:5000" class="brand-logo" style = "color:black;font-family: Century Gothic, sans-serif;margin-left:0%; margin-top:2%">eathoven</a></li>
+			   </ul>
+			   <ul class="right hide-on-med-and-down">
+			    <li><a href="#"><i class="material-icons" style = "color:black">view_module</i></a></li>
+			    <li><a href="http://localhost:5000/sign"><i class="material-icons" style = "color:black">input</i></a></li>
+			   </ul>
+			  <form style = "margin-left:30%;margin-right:25%;" class = "grey lighten-4" id ="searchform" action = "/result" >
+			    <div class="input-field">
+			    
+			      <input name="search" id="search" type="search" placeholder="Search" onkeyup="obj.getMusic()" required>
+			      <label for="search"><i class="material-icons">search</i></label>
+			    </div>
+			    <div id="container" style="display:none" ></div>
+			  </form>
+			</div>
+		  </nav>
+
+<br><br><br>	
+
+
+		{% for i in range(music_files_number): %}
+
+
+
+
+
+		  <div class="mdl-card mdl-shadow--2dp mdl-card--horizontal">
+		  <div class="mdl-card__media">
+		  
+		    <img style="height: 100%; width: 100%; object-fit: contain" src="/static/AlbumArt/{{allSongMatches[i][-1]}}.jpg" alt="img">
+		  </div>
+		    <div class="mdl-card__title">
+		      <h2 class="mdl-card__title-text">{{allSongMatches[i][0]}}</h2>
+		    </div>
+		    <div class="mdl-card__supporting-text">
+		      {{allSongMatches[i][1]}}<br>
+		      {{allSongMatches[i][2]}}<br>
+		      {{allSongMatches[i][3]}}<br>
+
+		    </div>
+		    <div class="mdl-card__actions mdl-card--border">
+		      <button onclick="playSong('{{allSongMatches[i][-1]}}')" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons md-36">play_circle_outline</i></button>
+		    </div>
+		    <div class="mdl-card__menu">
+		      <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple"><i class="material-icons">share</i></button>
+		    </div>
+		</div>
+
+
+		{%endfor%}
+	</body>
+<html>

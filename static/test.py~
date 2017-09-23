@@ -1,0 +1,5 @@
+f = open("songs.txt",'w')
+
+for i in range(20):
+	i = str(i)
+	print("Name"+i+","+"Artist"+i+","+"Genre"+i+","+i+"\n",file=f)

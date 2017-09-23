@@ -1,0 +1,69 @@
+<html>
+	<head>
+	      <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+	<body>
+		
+		
+		
+		  <main>
+  <div class="container">
+    <div id="white-box" class="white-box"></div>
+
+    <div id="login-info" class="hidden">
+      <h3>Have an account?</h3>
+
+      <p>Login to listen to your favorite music!</p>
+
+      <input id="show-login" class="btn" type="button" value="login" />
+    </div>
+
+    <div id="login-form" class="form">
+      <h2>log in</h2>
+	<form id="loginform" action="/login/" method="POST">
+	      <input name="username" type="text" placeholder="Name" required></input>
+	      <input name="password" type="password" placeholder="Password" required></input>
+	      <input class="btn primary" type="button" onclick="submit2()" value="log in"/>
+     	 </form>
+    </div>
+
+    <div id="signup-info" >
+      <h3>Don't have an account?</h3>
+
+      <p>Then what are you waiting for? Your music is just a few clicks away!</p>
+
+      <input id="show-signup" class="btn" type="button" value="sign up" />
+    </div>
+
+    <div id="signup-form" class="form hidden">
+      <h2>sign up</h2>
+	<form id="signupform" action="/register/" method="POST">
+	      <input name="username" id="username" onblur="checkValid()"type="text" placeholder="Full Name" required></input>
+	      <input name="password"type="password" placeholder="Password" required></input>
+	      <input name="age" type="text" placeholder="Age" required></input>
+	      <input name="location" type="text" placeholder="Country" required></input>
+	      <input type="submit" class="hidden" id="hiddensubmit"/>	     
+	      <input class="btn primary" type="button" onclick="submit1()" value="sign up"/>
+
+	      <i class="large material-icons" id="icon"></i>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+		
+		<script type="text/javascript" src="{{ url_for('static', filename='js/sign.js') }}"></script>
+		
+		<script type="text/javascript" src="{{ url_for('static', filename='js/check.js') }}"></script>
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>
+

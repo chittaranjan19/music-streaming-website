@@ -1,0 +1,53 @@
+var fft, // Allow us to analyze the song
+    numBars = 1024, // The number of bars to use; power of 2 from 16 to 1024
+    song; // The p5 sound object
+
+
+
+// Load our song
+function visualize(songName) {
+       if(typeof song != "undefined") { // Catch already playing songs
+            song.disconnect();
+            song.stop();
+        }
+        // Load our new song
+        song = loadSound("/static/music/"+songName+".mp3");
+        playSong(songName);
+}
+
+var canvas;
+function setup() { // Setup p5.js
+    canvas = createCanvas(windowWidth-20, (windowHeight*4)/10);
+    canvas.parent('visualizer');
+}
+
+function draw() {
+    background(51);
+    if(typeof song != "undefined" 
+       && song.isLoaded() 
+       && !song.isPlaying()) { // Do once
+        
+        song.play();
+
+       song.setVolume(1.0);
+	
+        fft = new p5.FFT();
+        fft.waveform(numBars);
+        fft.smooth(0.85);
+    }
+    
+    if(typeof fft != "undefined") {
+        var spectrum = fft.analyze();
+        noStroke();
+        fill("rgb(55, 140, 255)");
+        for(var i = 0; i < numBars; i++) {
+            var x = map(i, 0, numBars, 0, width);
+            var h = -height + map(spectrum[i], 0, 255, height, 0);
+            rect(x, height, width / numBars, h);
+        }
+    }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth-20, (windowHeight*4)/10);
+}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block play %}
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function(){
+    $("div input").click(function(){
+        $(this).hide();
+    });
+});
+function playSong(songname)
+{
+	s = songname;
+	xhr = new XMLHttpRequest();
+	
+	xhr.onreadystatechange = showAudio;
+	xhr.open("GET","/static/music/"+songname,true);
+	xhr.responseType = "blob";
+	xhr.send();
+	
+	x = document.getElementsByTagName("audio")
+	for(var i=0; i< x.length; ++i)
+	{
+		x[i].pause()
+	}
+}
+
+function showAudio()
+{
+	if(xhr.readyState == 4 && xhr.status == 200){
+	
+	data = xhr.response
+	d = document.createElement("audio")
+	d.controls = "controls"
+	d.autoplay = "autoplay"
+	d2 = document.createElement("source")
+	d2.src = window.URL.createObjectURL(data);
+	d2.type = "audio/mp3"
+	d.appendChild(d2)
+	document.getElementById(s).appendChild(d)
+	xhr.abort()
+	}
+	
+}
+
+</script>
+
+<p>Hello {{userName}}! Enjoy your music!</p>
+{% for i in range(music_files_number) %}
+   <div id="{{music_files[i]}}">
+    <p> {{ i+1 }}) {{ music_files[i] }} </p>
+    <input type="button" onclick="playSong('{{music_files[i]}}')" value="Play!" ></input>
+    </div>
+{% endfor %}
+{% endblock %}

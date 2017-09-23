@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<title>Beathoven</title>
+			  <link rel="stylesheet" href="/static/css/materialize.min.css">
+			  <link href="/static/css/materialicons.css" rel="stylesheet">
+			  <link rel="stylesheet" href="/static/css/index_1.css">
+			  <script src="/static/js/modernizr.js" type="text/javascript"></script>
+			  <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+			  <script src="/static/js/materialize.min.js"></script>
+			  <script src="/static/js/prefixfree.min.js"></script>
+
+
+		    <link rel="stylesheet" href="/static/css/materialicons2.css">
+		    	    <link rel="stylesheet" href="/static/css/material.min.css">
+
+
+			  <link rel="stylesheet" href="/static/css/finalcard.css">
+			  
+			  <link rel="stylesheet" href="/static/css/visualizer.css">
+			    
+
+		<script src="/static/js/visualizer.js"></script>
+		<script src="/static/js/submissionthrottling.js"></script>
+
+		<script src='/static/js/p5.min.js'></script>
+		<script src='/static/js/p5.sound.min.js'></script>
+
+		<style>
+			.input-field{
+						border:0px solid black;display:block;
+				
+				}
+				div.i {background-color:#FFFFFF;color:#333333;}
+				div.i:hover { background-color:#DDDDDD; }
+		</style>
+
+
+
+	</head>
+
+
+
+	<body>
+
+
+
+
+  <nav class = "navstatic">
+        <div class="nav-wrapper white">
+           <ul class = "left">
+           <li>
+              <a><i class="material-icons" style = "color:black">menu</i></a>
+           </li>
+           <li>
+            <div class="user" style="background-image:url('/static/images/b.png')"></div>
+           </li>
+           <li><a href="http://localhost:5000" class="brand-logo" style = "color:black;font-family: Century Gothic, sans-serif;margin-left:0%; margin-top:2%">eathoven</a></li>
+           </ul>
+           <ul class="right hide-on-med-and-down">
+            <li><a href="#"><i class="material-icons" style = "color:black">view_module</i></a></li>
+            <li><a href="http://localhost:5000/sign"><i class="material-icons" style = "color:black">input</i></a></li>
+           </ul>
+          <form style = "margin-left:30%;margin-right:25%;" class = "grey lighten-4" id ="searchform" action = "/result" >
+            <div class="input-field">
+            
+              <input name="search" id="search" type="search" placeholder="Search" onkeyup="obj.getMusic()" required>
+              <label for="search"><i class="material-icons">search</i></label>
+            </div>
+            <div id="container" style="display:none" ></div>
+          </form>
+        </div>
+  </nav>
+
+      
+
+		<script src="/static/js/index.js"></script>
+
+
+<br><br><br>
+
+
+
+<div id='visualizer'></div>
+
+
+
+
+<br><br><br>
+
+
+
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<div class="android-content mdl-layout__content">
+        <div class="android-more-section">
+          
+          <div class="android-card-container mdl-grid">
+          
+
+
+	{% for i in range(music_files_number) %}  
+	
+
+
+            
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+            	
+              <div class="mdl-card__media">
+                <img src="/static/AlbumArt/{{songsDict[music_files[i]][-1]}}.jpg">
+              </div>
+              <div class="mdl-card__title">
+                <button onclick="visualize('{{songsDict[music_files[i]][-1]}}')" id="demo-menu-lower-right"
+                        class="mdl-button mdl-js-button mdl-button--icon">
+                  <i class="material-icons md-36">play_circle_outline</i>
+                </button>
+		
+		&nbsp;&nbsp;
+                <a href="/result?search={{music_files[i]}}" ><h4 class="mdl-card__title-text">{{music_files[i]}}</h4></a>
+                <!-- Right aligned menu below button -->
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">{{songsDict[music_files[i]][2]}}</span>
+              </div>
+              <div class="mdl-card__actions">
+                 <span id="songcounter{{songsDict[music_files[i]][-1]}}" class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase">
+                   <i class="material-icons">headset</i>
+                   {{songsDict[music_files[i]][-3]}}
+                 </span>
+                <span class="wsk-icon wsk-icon--thumb-up" title="wsk-icon--thumb-up"></span>
+              </div>
+              <div class="mdl-card__menu">
+                <button  class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                  <i class="material-icons">share</i>
+                </button>
+              </div>
+            </div>
+
+
+
+
+
+	{%endfor%}
+
+
+
+
+            
+          </div>
+        </div>
+
+        
+      </div>
+</div>
+
+
+
+
+
+
+
+	</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<title>Beathoven</title>
+			  <link rel="stylesheet" href="/static/css/materialize.min.css">
+			  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			  <link rel="stylesheet" href="/static/css/index_1.css">
+			  <link rel="stylesheet" href="/static/css/proj.css">
+			  <script src="/static/js/modernizr.js" type="text/javascript"></script>
+			  <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+			  <script src="/static/js/materialize.min.js"></script>
+			  <script src="/static/js/prefixfree.min.js"></script>
+			  
+			  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+			  <link rel="stylesheet" href="/static/css/visualizer.css">
+			    
+
+		<script src="/static/js/visualizer.js"></script>
+		<script src="/static/js/submissionthrottling.js"></script>
+		<script src="/static/js/multistagedownload.js"></script>
+		<!--<script src="/static/js/playSong.js"></script>-->
+
+		<script src='/static/js/p5.min.js'></script>
+		<script src='/static/js/p5.sound.min.js'></script>
+
+		<script>
+		var songnm = '{{details['musicname']}}';
+		console.log("songnm="+songnm);
+		</script>
+		<style>
+			.input-field{
+						border:0px solid black;display:block;
+				
+				}
+				div.i {background-color:#FFFFFF;color:#333333;}
+				div.i:hover { background-color:#DDDDDD; }
+			.material-icons.orange600 { color: #FB8C00; }
+			
+			.material-icons.md-18 { font-size: 18px; }
+			.material-icons.md-24 { font-size: 24px; }
+			.material-icons.md-36 { font-size: 36px; }
+			.material-icons.md-48 { font-size: 48px; }
+			.material-icons.md-64 { font-size: 64px; }
+		</style>
+		</script>
+
+	</head>
+
+
+
+	<body onload="getImage()">
+
+
+
+
+  <nav class = "navstatic">
+        <div class="nav-wrapper white">
+           <ul class = "left">
+           <li>
+              <a><i class="material-icons" style = "color:black">menu</i></a>
+           </li>
+           <li>
+            <div class="user" style="background-image:url('/static/images/b.png')"></div>
+           </li>
+           <li><a href="http://localhost:5000" class="brand-logo" style = "color:black;font-family: Century Gothic, sans-serif;margin-left:0%">eathoven</a></li>
+           </ul>
+           <ul class="right hide-on-med-and-down">
+            <li><a href="#"><i class="material-icons" style = "color:black">view_module</i></a></li>
+            <li><a href="http://localhost:5000/sign"><i class="material-icons" style = "color:black">input</i></a></li>
+           </ul>
+          <form style = "margin-left:30%;margin-right:25%;" class = "grey lighten-4" id ="searchform" action = "/result" >
+            <div class="input-field">
+            
+              <input name="search" id="search" type="search" placeholder="Search" onkeyup="obj.getMusic()" required>
+              <label for="search"><i class="material-icons">search</i></label>
+            </div>
+            <div id="container" style="display:none" ></div>
+          </form>
+        </div>
+  </nav>
+
+      
+
+		<script src="/static/js/playSong.js"></script>
+
+
+<br><br><br>
+
+
+
+<div id='visualizer'></div>
+
+
+<div class="container center-align" style="height : 15%; ">
+	 
+		<!--<i class="material-icons md-64 orange600" onclick="playSong('{{songname}}')">play_circle_outline</i>-->
+		<button  onclick="visualize('{{details['musicname']}}')" ><i class="material-icons md-64 orange600">play_circle_outline</i></button>
+	  	<div class="left" style="height:100%;">	
+			
+			<h4 class="left-align" >Everything you need to know about this song!!</h4>
+			<h6 class="left-align" >Enjoy your music!</h4>
+			
+		</div>
+</div>
+
+
+<br><br><br>
+<br><br><br>
+
+
+
+
+
+<div class="container"><!--START COLLECTIONS CONTAINER-->
+<div id="bodyContent" class="mw-body-content">
+<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="infobox" style="width:22em">
+<tbody><tr>
+<th colspan="2" style="text-align:center;font-size:125%;font-weight:bold"><span class="fn">Song Details</span></th>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center">
+<div id="imgAlb">
+IMG
+</div>
+<div>{{songname}}</div>
+</td>
+</tr>
+<tr>
+<th scope="row" style="background:#DADCED;">Song Name</th>
+<td style="background:#E6E8FA;">{{songname}}</td>
+</tr>
+<tr>
+<th scope="row" style="background:#DADCED;">Album Name</th>
+<td style="background:#E6E8FA;">{{details['albumname']}}</td>
+</tr>
+<tr>
+<th scope="row" style="background:#DADCED;">Genre</th>
+<td style="background:#E6E8FA;">{{details['genre']}}</td>
+</tr>
+<tr>
+<th scope="row" style="background:#DADCED;">Arist</th>
+<td style="background:#E6E8FA;">{{details['artist']}}</td>
+</tr>
+<tr>
+<th scope="row" style="background:#DADCED;">No. Played</th>
+<td style="background:#E6E8FA;">{{details['count']}}</td>
+</tr>
+<tr>
+<th scope="row" style="background:#DADCED;">Language</th>
+<td style="background:#E6E8FA;">{{details['language']}}</td>
+</tr>
+</tbody></table>
+<p>
+{% for line in lyrics%}
+<p style="font-family: sans-serif;font-size: 1.8em">{{line}}</p>
+{%endfor%}
+</p>
+
+<p></p>
+<p></p>
+</tr>
+
+</div>
+
+</div>
+
+
+	
+	</div><!-- END COLLECTIONS CONTAINER-->
+	
+
+
+
+
+
+
+	</body>
+</html>

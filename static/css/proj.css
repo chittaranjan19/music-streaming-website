@@ -1,0 +1,130 @@
+#mw-page-base {
+    height: 5em;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    background-image: url(/w/skins/Vector/images/page-fade.png?1d168);
+    background-color: #f6f6f6;
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(50%,#ffffff),color-stop(100%,#f6f6f6));
+    background-image: -webkit-linear-gradient(top,#ffffff 50%,#f6f6f6 100%);
+    background-image: -moz-linear-gradient(top,#ffffff 50%,#f6f6f6 100%);
+    background-image: linear-gradient(#ffffff 50%,#f6f6f6 100%);
+    background-color: #ffffff;
+}
+
+div {
+    display: block;
+}
+@media screen and (min-width: 982px)
+#mw-head-base {
+    margin-left: 11em;
+}
+#mw-head-base {
+    margin-top: -5em;
+    margin-left: 10em;
+    height: 5em;
+}
+div {
+    display: block;
+}
+
+.mw-body {
+    margin-left: 10em;
+    padding: 1em;
+    border: 1px solid #a7d7f9;
+    border-right-width: 0;
+    margin-top: -1px;
+    background-color: #ffffff;
+    color: #222222;
+    direction: ltr;
+}
+div {
+    display: block;
+}
+
+a:not( [href] ) {
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+    color: #0645ad;
+    background: none;
+}
+
+.mw-body-content {
+    position: relative;
+    line-height: 1.6;
+    font-size: 0.875em;
+    z-index: 0;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+.mw-content-ltr {
+    direction: ltr;
+}
+div[Attributes Style] {
+    -webkit-locale: "en";
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+div {
+    display: block;
+}
+.infobox {
+    border: 1px solid #a2a9b1;
+    border-spacing: 3px;
+    background-color: #f8f9fa;
+    color: black;
+    margin: 0.5em 0 0.5em 1em;
+    padding: 0.2em;
+    float: right;
+    clear: right;
+    font-size: 88%;
+    line-height: 1.5em;
+}
+table {
+    font-size: 100%;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.infobox td, .infobox th {
+    vertical-align: top;
+    text-align: left;
+}
+th {
+    font-weight: bold;
+    text-align: -internal-center;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+.mw-body-content p {
+    line-height: inherit;
+    margin: 0.5em 0;
+}
+p {
+    margin: 0.4em 0 0.5em 0;
+}
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}

@@ -1,0 +1,1 @@
+<img alt="/static/images/coll.jpg" src="/static/images/Clocks.jpg" width="220" height="187" data-file-width="500" data-file-height="426">  
